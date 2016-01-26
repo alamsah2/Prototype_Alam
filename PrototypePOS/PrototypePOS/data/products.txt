@@ -1,0 +1,12 @@
+blue_shirt.jpg, Blue shirt, 10.00, 1, M
+red_shirt.jpg, Red shirt, 10.00, 1, M
+white_shirt.jpg, White shirt, 5.00, 1, M
+dark_navy_shirt.jpg, Dark navy shirt, 10.00, 1, M
+blue_shirt_female.jpg, Blue shirt, 10.00, 1, F
+red_shirt_female.jpg, Red shirt, 10.00, 1, F
+white_shirt_female.jpg, White shirt, 5.00, 1, F
+dark_navy_shirt_female.jpg, Dark navy shirt, 15.00, 1, F
+xmaspants.jpg, Pants, 10.50, 2, M
+xmaspants.jpg, Pants, 10.50, 2, F
+shorts.jpg, Shorts, 15.00, 2, M
+skirt.jpg, Skirt, 15.00, 2, F

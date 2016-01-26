@@ -1,0 +1,13 @@
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\bin\Debug\PrototypePOS.exe.config
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\bin\Debug\PrototypePOS.exe
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\bin\Debug\PrototypePOS.pdb
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.POS.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.Properties.Resources.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.csproj.GenerateResource.Cache
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.exe
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.pdb
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.MainForm.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.Payment.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.Receipt.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.PasswordInput.resources
+C:\Users\Gerald\Documents\School\Year 1 - Semester 2\Application Development\Assignment\Assignment1\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.SplashScreen.resources

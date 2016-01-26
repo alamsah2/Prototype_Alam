@@ -1,0 +1,21 @@
+	PROTOTYPE Apparel Shop
+-----------------------------------------------------------------------------
+Date/Time: 26/01/2016 22:34:20
+Transaction no: 261399
+-----------------------------------------------------------------------------
+Description   Size   Qty   Price
+-----------------------------------------------------------------------------
+1. Blue shirt (S) x1 -- $10.00
+
+Total      		$10.00
+Payment mode: Credit Card
+Credit card holder name: asdasdasd
+Credit Card no: sdasd
+Card Type: Mastercard/Visa
+
+THIS SERVES AS AN OFFICAL RECEIPT
+*************************************************
+All apparels can be refunded/exchanged within 7 days.
+
+Please bring along the receipt of the product.
+*************************************************
