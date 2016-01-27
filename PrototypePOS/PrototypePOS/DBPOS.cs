@@ -26,7 +26,7 @@ namespace PrototypePOS
                         {
                             if (!File.Exists("data/database_a.txt"))
                             {
-                                MessageBox.Show("database.txt can't be found!");
+                                MessageBox.Show("database_a.txt can't be found!");
                             }
 
                             else
@@ -78,5 +78,70 @@ namespace PrototypePOS
                 }
             }
         }
+
+        public void InsertVendorAccount(string txtBxEmail , string txtBxName, string txtBxPassword, string dateOfRegistration)
+        {
+           
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+                            if (!File.Exists("data/database_a.txt"))
+                            {
+                                MessageBox.Show("database_a.txt can't be found!");
+                            }
+
+                            else
+                            {
+                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
+                                {
+                                    while (sr.Peek() >= 0)
+                                    {
+                                        string str;
+                                        string[] strArray;
+                                        str = sr.ReadLine();
+
+                                        strArray = Regex.Split(str, ", ");
+                                        datasource = strArray[0];
+                                        database = strArray[1];
+
+                                    }
+                                }
+                            }
+
+                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                            cmd.Connection = conn;
+                            cmd.CommandText = (string.Format("Insert into Account Values('{0}','{1}','{2}',{3},2)",txtBxName,txtBxPassword,txtBxEmail, dateOfRegistration));
+                           
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }

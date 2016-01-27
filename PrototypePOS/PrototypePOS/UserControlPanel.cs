@@ -38,31 +38,52 @@ namespace PrototypePOS
                     FlowLayoutPanel AdminPanel = new FlowLayoutPanel();
                     AdminPanel.AutoScroll = true;
                     AdminPanel.Size = new Size(581, 308);
-                    AdminPanel.Location = new Point(10, 71);
-                    AdminPanel.Padding = new Padding(5, 5, 5, 5);
+                    AdminPanel.Location = new Point(10, 51);
+                    AdminPanel.Padding = new Padding(5, 0, 5, 5);
 
                     Button viewPOSBtn = new Button();
                     viewPOSBtn.Size = new Size(124, 52);
-                    viewPOSBtn.Text = "&Shop";
+                    viewPOSBtn.Text = "View Shop";
                     viewPOSBtn.Click += OpenPOS;
 
                     Button addVendorBtn = new Button();
                     addVendorBtn.Size = new Size(124, 52);
-                    addVendorBtn.Text = "&Add Vendor";
+                    addVendorBtn.Text = "Add Vendor";
+                    addVendorBtn.Click += OpenAddVendor;
+
+                    Button addCategoryBtn = new Button();
+                    addCategoryBtn.Size = new Size(124, 52);
+                    addCategoryBtn.Text = "Add Category";
+
+                    Button addProductBtn = new Button();
+                    addProductBtn.Size = new Size(124, 52);
+                    addProductBtn.Text = "Add Product";
 
                     Button viewVendorsBtn = new Button();
                     viewVendorsBtn.Size = new Size(124, 52);
-                    viewVendorsBtn.Text = "&View Vendors";
+                    viewVendorsBtn.Text = "View Vendors";
+
+                    Button viewProductsBtn = new Button();
+                    viewProductsBtn.Size = new Size(124, 52);
+                    viewProductsBtn.Text = "View Products";
 
                     Button salesReportBtn = new Button();
                     salesReportBtn.Size = new Size(124, 52);
-                    salesReportBtn.Text = "&Sales Report";
+                    salesReportBtn.Text = "Sales Report";
+
+                    Button changePasswordBtn = new Button();
+                    changePasswordBtn.Size = new Size(124, 52);
+                    changePasswordBtn.Text = "Change Account Password";
 
                     this.Controls.Add(AdminPanel);
                     AdminPanel.Controls.Add(viewPOSBtn);
                     AdminPanel.Controls.Add(addVendorBtn);
+                    AdminPanel.Controls.Add(addCategoryBtn);
+                    AdminPanel.Controls.Add(addProductBtn);
                     AdminPanel.Controls.Add(viewVendorsBtn);
+                    AdminPanel.Controls.Add(viewProductsBtn);
                     AdminPanel.Controls.Add(salesReportBtn);
+                    AdminPanel.Controls.Add(changePasswordBtn);
                     break;
 
                 case "Vendor":
@@ -141,6 +162,12 @@ namespace PrototypePOS
         private void OpenPOS(object sender, EventArgs e) {
             MainForm mf = new MainForm();
             mf.ShowDialog();
+        }
+
+        private void OpenAddVendor(object sender, EventArgs e)
+        {
+            VendorSignUp vsu = new VendorSignUp();
+            vsu.ShowDialog();
         }
     }
 }
