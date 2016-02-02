@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PrototypePOS
 {
+    
     public partial class RegistrationForm : Form
-    {
-
-
+    { 
         public RegistrationForm()
         {
             InitializeComponent();
@@ -24,6 +24,10 @@ namespace PrototypePOS
         {
             txtBxCVC.MaxLength = 3;
             txtBxCreditCardNo.MaxLength = 16;
+            txtBxMobileNo.MaxLength = 8;
+            txtBxSixDigitPIN.MaxLength = 6;
+            txtBxCreditCardNo.MaxLength = 16;
+            
             lblErrorRegistration.Text = "";
             txtBxPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             txtBxPassword.PasswordChar = '\u2022';
