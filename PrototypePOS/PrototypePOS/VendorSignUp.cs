@@ -22,28 +22,36 @@ namespace PrototypePOS
             InitializeComponent();
         }
 
+        
         private void btnCreateVendor_Click(object sender, EventArgs e)
         {
+
             if (String.IsNullOrEmpty(txtBxUsername.Text) || String.IsNullOrEmpty(txtBxPassword.Text) || String.IsNullOrEmpty(txtBxEmail.Text))
             {
                 lblAddVendorError.Text = "Please ensure all fields are entered";
+                lblAddVendorError.Visible = true;
 
             }
             else {
 
                 DBPOS dbp = new DBPOS();
-                dbp.InsertVendorAccount(txtBxEmail.Text, txtBxUsername.Text, txtBxPassword.Text, "GETDATE()");
+                dbp.InsertAccount(txtBxEmail.Text, txtBxUsername.Text, txtBxPassword.Text, "GETDATE()",2);
+                dbp.InsertVendor(dbp.GetAccountID(txtBxUsername.Text),txtBxUsername.Text, txtBxContactPerson.Text, txtBxContactNo.Text);
                 MessageBox.Show("Vendor account has been created.");
                 txtBxEmail.Text = "";
                 txtBxUsername.Text = "";
                 txtBxPassword.Text = "";
-                txtBxEmail.Text= "";
+                txtBxEmail.Text = "";
+                txtBxContactPerson.Text = "";
+                txtBxContactNo.Text = "";
             }
+
         }
 
         private void VendorSignUp_Load(object sender, EventArgs e)
         {
             lblAddVendorError.Text = "";
+            lblAddVendorError.Visible = false;
             txtBxPassword.PasswordChar = '*';
         }
     }

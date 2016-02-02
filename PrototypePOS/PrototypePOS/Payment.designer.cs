@@ -81,7 +81,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 20);
+            this.label2.Size = new System.Drawing.Size(133, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Card Holder Name :";
             // 
@@ -89,7 +89,7 @@
             // 
             this.custNameTxtbx.Location = new System.Drawing.Point(180, 56);
             this.custNameTxtbx.Name = "custNameTxtbx";
-            this.custNameTxtbx.Size = new System.Drawing.Size(290, 27);
+            this.custNameTxtbx.Size = new System.Drawing.Size(290, 23);
             this.custNameTxtbx.TabIndex = 5;
             // 
             // label5
@@ -97,7 +97,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 169);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 20);
+            this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "CVC :";
             // 
@@ -106,7 +106,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 133);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 20);
+            this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Expiry Date :";
             // 
@@ -115,7 +115,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 20);
+            this.label3.Size = new System.Drawing.Size(141, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Credit Card Number :";
             // 
@@ -123,14 +123,14 @@
             // 
             this.creditCardNumTxtbx.Location = new System.Drawing.Point(180, 92);
             this.creditCardNumTxtbx.Name = "creditCardNumTxtbx";
-            this.creditCardNumTxtbx.Size = new System.Drawing.Size(178, 27);
+            this.creditCardNumTxtbx.Size = new System.Drawing.Size(178, 23);
             this.creditCardNumTxtbx.TabIndex = 6;
             // 
             // CvcTxtbx
             // 
             this.CvcTxtbx.Location = new System.Drawing.Point(180, 166);
             this.CvcTxtbx.Name = "CvcTxtbx";
-            this.CvcTxtbx.Size = new System.Drawing.Size(115, 27);
+            this.CvcTxtbx.Size = new System.Drawing.Size(115, 23);
             this.CvcTxtbx.TabIndex = 8;
             // 
             // label6
@@ -139,7 +139,7 @@
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(107, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 20);
+            this.label6.Size = new System.Drawing.Size(16, 16);
             this.label6.TabIndex = 9;
             this.label6.Text = "&?";
             this.toolTip1.SetToolTip(this.label6, "Month/Year e.g. 05/19");
@@ -150,7 +150,7 @@
             this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(56, 169);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 20);
+            this.label8.Size = new System.Drawing.Size(16, 16);
             this.label8.TabIndex = 12;
             this.label8.Text = "&?";
             this.toolTip1.SetToolTip(this.label8, "The last 3 digit at the back of your credit card");
@@ -160,7 +160,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(17, 335);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 20);
+            this.label7.Size = new System.Drawing.Size(108, 17);
             this.label7.TabIndex = 10;
             this.label7.Text = "Discount Code :";
             // 
@@ -168,7 +168,7 @@
             // 
             this.txtbxDiscountCode.Location = new System.Drawing.Point(146, 335);
             this.txtbxDiscountCode.Name = "txtbxDiscountCode";
-            this.txtbxDiscountCode.Size = new System.Drawing.Size(223, 27);
+            this.txtbxDiscountCode.Size = new System.Drawing.Size(223, 23);
             this.txtbxDiscountCode.TabIndex = 11;
             // 
             // paymentConfirmbtn
@@ -198,7 +198,7 @@
             this.paymentlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymentlbl.Location = new System.Drawing.Point(248, 72);
             this.paymentlbl.Name = "paymentlbl";
-            this.paymentlbl.Size = new System.Drawing.Size(66, 25);
+            this.paymentlbl.Size = new System.Drawing.Size(54, 20);
             this.paymentlbl.TabIndex = 15;
             this.paymentlbl.Text = "$0.00";
             // 
@@ -255,7 +255,7 @@
             this.dtpExpiryDate.Location = new System.Drawing.Point(180, 128);
             this.dtpExpiryDate.Name = "dtpExpiryDate";
             this.dtpExpiryDate.ShowUpDown = true;
-            this.dtpExpiryDate.Size = new System.Drawing.Size(89, 27);
+            this.dtpExpiryDate.Size = new System.Drawing.Size(89, 23);
             this.dtpExpiryDate.TabIndex = 16;
             // 
             // radioAmericanExp
@@ -264,7 +264,7 @@
             this.radioAmericanExp.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioAmericanExp.Location = new System.Drawing.Point(271, 23);
             this.radioAmericanExp.Name = "radioAmericanExp";
-            this.radioAmericanExp.Size = new System.Drawing.Size(163, 23);
+            this.radioAmericanExp.Size = new System.Drawing.Size(139, 20);
             this.radioAmericanExp.TabIndex = 15;
             this.radioAmericanExp.TabStop = true;
             this.radioAmericanExp.Text = "American Express";
@@ -276,7 +276,7 @@
             this.radioMasterVisa.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMasterVisa.Location = new System.Drawing.Point(112, 23);
             this.radioMasterVisa.Name = "radioMasterVisa";
-            this.radioMasterVisa.Size = new System.Drawing.Size(149, 23);
+            this.radioMasterVisa.Size = new System.Drawing.Size(128, 20);
             this.radioMasterVisa.TabIndex = 14;
             this.radioMasterVisa.TabStop = true;
             this.radioMasterVisa.Text = "Mastercard/Visa";
@@ -288,7 +288,7 @@
             this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(10, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 19);
+            this.label12.Size = new System.Drawing.Size(82, 16);
             this.label12.TabIndex = 13;
             this.label12.Text = "Card Type :";
             // 
@@ -308,7 +308,7 @@
             this.txtbxCashPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbxCashPayment.Location = new System.Drawing.Point(149, 50);
             this.txtbxCashPayment.Name = "txtbxCashPayment";
-            this.txtbxCashPayment.Size = new System.Drawing.Size(178, 27);
+            this.txtbxCashPayment.Size = new System.Drawing.Size(178, 23);
             this.txtbxCashPayment.TabIndex = 1;
             // 
             // label10
@@ -316,7 +316,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(22, 53);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 20);
+            this.label10.Size = new System.Drawing.Size(104, 17);
             this.label10.TabIndex = 0;
             this.label10.Text = "Your payment :";
             // 
@@ -326,7 +326,7 @@
             this.cashPaymentRadio.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashPaymentRadio.Location = new System.Drawing.Point(171, 110);
             this.cashPaymentRadio.Name = "cashPaymentRadio";
-            this.cashPaymentRadio.Size = new System.Drawing.Size(66, 26);
+            this.cashPaymentRadio.Size = new System.Drawing.Size(54, 21);
             this.cashPaymentRadio.TabIndex = 20;
             this.cashPaymentRadio.TabStop = true;
             this.cashPaymentRadio.Text = "Cash";
@@ -339,7 +339,7 @@
             this.creditCardRadio.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.creditCardRadio.Location = new System.Drawing.Point(253, 110);
             this.creditCardRadio.Name = "creditCardRadio";
-            this.creditCardRadio.Size = new System.Drawing.Size(110, 26);
+            this.creditCardRadio.Size = new System.Drawing.Size(88, 21);
             this.creditCardRadio.TabIndex = 21;
             this.creditCardRadio.TabStop = true;
             this.creditCardRadio.Text = "Credit Card";
@@ -352,7 +352,7 @@
             this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(16, 113);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 19);
+            this.label11.Size = new System.Drawing.Size(137, 16);
             this.label11.TabIndex = 22;
             this.label11.Text = "Mode of payment :";
             // 
@@ -395,7 +395,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(541, 479);
+            this.ClientSize = new System.Drawing.Size(560, 440);
             this.Controls.Add(this.btnCancelPayment);
             this.Controls.Add(this.btnResetDiscount);
             this.Controls.Add(this.discountAppliedStatuslbl);
@@ -413,9 +413,8 @@
             this.Controls.Add(this.creditCardPaymentGrpbx);
             this.Controls.Add(this.cashPaymentGrpbx);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(541, 479);
             this.MinimumSize = new System.Drawing.Size(541, 479);
             this.Name = "Payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

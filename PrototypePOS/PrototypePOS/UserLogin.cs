@@ -5,9 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace PrototypePOS
 {
     public partial class UserLogin : Form
@@ -18,7 +18,16 @@ namespace PrototypePOS
 
         public UserLogin()
         {
+            Thread t = new Thread(new ThreadStart(SplashScreen));
+            t.Start();
+            Thread.Sleep(1000);
+            t.Abort();
             InitializeComponent();
+        }
+
+        public void SplashScreen()
+        {
+            Application.Run(new SplashScreen());
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -33,7 +42,7 @@ namespace PrototypePOS
             users = db.GetUserAccounts();
             current = 0;
 
-            if (String.IsNullOrEmpty(txtBxUserName.Text) || String.IsNullOrEmpty(txtBxPassword.Text))
+            if (String.IsNullOrEmpty(txtBxUserName.Text) && String.IsNullOrEmpty(txtBxPassword.Text))
             {
                 lblLoginErrorMsg.Text = "Please ensure all fields are entered";
                 txtBxUserName.ResetText();
@@ -52,13 +61,6 @@ namespace PrototypePOS
                     cp.CurrentUser = users[current];
                     cp.ShowDialog();
                 }
-
-                else
-                {
-                    txtBxUserName.ResetText();
-                    txtBxPassword.ResetText();
-                    lblLoginErrorMsg.Text = "Either the username or password was incorrect.";
-                }
             }
 
             else
@@ -74,6 +76,14 @@ namespace PrototypePOS
             //txtBxPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lblLoginErrorMsg.Text = "";
             txtBxPassword.PasswordChar = '\u2022';
+        }
+
+        private void onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

@@ -62,6 +62,7 @@ namespace PrototypePOS
                     Button viewVendorsBtn = new Button();
                     viewVendorsBtn.Size = new Size(124, 52);
                     viewVendorsBtn.Text = "View Vendors";
+                    viewVendorsBtn.Click += OpenViewVendor;
 
                     Button viewProductsBtn = new Button();
                     viewProductsBtn.Size = new Size(124, 52);
@@ -135,7 +136,7 @@ namespace PrototypePOS
             CreateControls();
 
             string info = "";
-            info = string.Format("Welcome {0}, choose what you wish to do below.", lblAccountDetails.Text);
+            info = string.Format("Welcome {0}, choose what you wish to do below.", user.Username);
             lblAccountDetails.Text = info;
         }
 
@@ -160,14 +161,21 @@ namespace PrototypePOS
         }
 
         private void OpenPOS(object sender, EventArgs e) {
-            MainForm mf = new MainForm();
-            mf.ShowDialog();
+            POS pos = new POS();
+            pos.Store = new Store();
+            pos.ShowDialog();
         }
 
         private void OpenAddVendor(object sender, EventArgs e)
         {
             VendorSignUp vsu = new VendorSignUp();
             vsu.ShowDialog();
+        }
+
+        private void OpenViewVendor(object sender,EventArgs e)
+        {
+            LoadVendor lv = new LoadVendor();
+            lv.ShowDialog();
         }
     }
 }

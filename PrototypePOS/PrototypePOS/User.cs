@@ -8,7 +8,8 @@ namespace PrototypePOS
 {
     public class User
     {
-        private string username, password, accountType;
+        private string username, password,accountType;
+   
 
         //Properties
         public string AccountType {
