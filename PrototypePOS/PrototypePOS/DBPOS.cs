@@ -133,7 +133,7 @@ namespace PrototypePOS
                             {
                                 conn.Close();
                             }
-                            return x;
+                            return x; 
                         }
                     }
                 }
@@ -194,6 +194,57 @@ namespace PrototypePOS
                 }
             }
         }
+        public int GetSixDigitPIN()
+        {
+
+
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+                            int x = 0;
+
+                            try
+                            {
+
+                                conn.ConnectionString = LoadInfo();
+                                cmd.Connection = conn;
+                                cmd.CommandText = string.Format("SELECT SixDigitPIN FROM CreditCard where AccountID = Account.AccountID");
+                                da.SelectCommand = cmd;
+
+
+
+                                conn.Open();
+                                da.Fill(table);
+
+                                foreach (DataRow row in table.Rows)
+                                {
+                                    x = int.Parse(row["SixDigitPIN"].ToString());
+                                }
+                            }
+
+                         
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+                            return x;
+                        }
+                    }
+                }
+            }
+        }
+
         public void InsertAccount(string txtBxEmail, string txtBxName, string txtBxPassword, string dateOfRegistration, int accountType)
         {
 
@@ -235,7 +286,89 @@ namespace PrototypePOS
                     }
                 }
             }
-        }                
+        }
+        public void UpdateAccount( string txtBxPassword, string txtBxEmail, string txtBxUsernameOld)
+        {
+
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+
+
+
+                            conn.ConnectionString = LoadInfo();
+                            cmd.Connection = conn;
+                            cmd.CommandText = (string.Format("UPDATE Account SET Password = '{0}',Email = '{1}' WHERE AccountID='{2}'", txtBxPassword, txtBxEmail, GetAccountID(txtBxUsernameOld)));
+                            //cmd.CommandText = (string.Format("UPDATE Account SET (Password,Email) ([Password] = '{0}',[Email] = '{1}' WHERE Username='{2}')", txtBxPassword, txtBxEmail, txtBxUsernameOld));
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        public void UpdateCustomer(string txtBxFirstName, string txtBxLastName, string txtBxMobileNo, string txtBxUsernameOld)
+        {
+
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+
+                            conn.ConnectionString = LoadInfo();
+                            cmd.Connection = conn;
+                            cmd.CommandText = (string.Format("UPDATE Customer SET FirstName='{0}',LastName='{1}',MobileNo='{2}' where AccountID='{3}'",txtBxFirstName, txtBxLastName, txtBxMobileNo,GetAccountID(txtBxUsernameOld)));
+
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "customer");
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
         public void InsertCustomer(int AccountID,string txtBxFirstName, string txtBxLastName, string txtBxMobileNo,DateTime DOB)
         { 
 
@@ -334,6 +467,47 @@ namespace PrototypePOS
                             
                             cmd.CommandText = "SELECT Account.AccountID FROM Account";
                             cmd.CommandText = (string.Format("Insert into Vendor Values('{0}','{1}','{2}','{3}')",accountID, txtBxName, txtBxContactPerson, txtBxContactNo));
+
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        public void InsertCategory(string txtBxDescription, string genderType)
+        {
+
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+                            conn.ConnectionString = LoadInfo();
+                            cmd.Connection = conn;
+
+                            cmd.CommandText = "SELECT Account.AccountID FROM Account";
+                            cmd.CommandText = (string.Format("Insert into Category Values('{0}','{1}')",txtBxDescription,genderType ));
 
 
                             try

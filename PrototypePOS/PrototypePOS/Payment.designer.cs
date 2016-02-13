@@ -31,16 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.custNameTxtbx = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.creditCardNumTxtbx = new System.Windows.Forms.TextBox();
-            this.CvcTxtbx = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtbxDiscountCode = new System.Windows.Forms.TextBox();
             this.paymentConfirmbtn = new System.Windows.Forms.Button();
@@ -48,11 +39,6 @@
             this.paymentlbl = new System.Windows.Forms.Label();
             this.btnApplyDiscountCode = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.creditCardPaymentGrpbx = new System.Windows.Forms.GroupBox();
-            this.dtpExpiryDate = new System.Windows.Forms.DateTimePicker();
-            this.radioAmericanExp = new System.Windows.Forms.RadioButton();
-            this.radioMasterVisa = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
             this.cashPaymentGrpbx = new System.Windows.Forms.GroupBox();
             this.txtbxCashPayment = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,8 +48,11 @@
             this.discountAppliedStatuslbl = new System.Windows.Forms.Label();
             this.btnResetDiscount = new System.Windows.Forms.Button();
             this.btnCancelPayment = new System.Windows.Forms.Button();
-            this.creditCardPaymentGrpbx.SuspendLayout();
+            this.creditCardPaymentGrpbx = new System.Windows.Forms.GroupBox();
+            this.lblSixDigitPIN = new System.Windows.Forms.Label();
+            this.txtBxSixDigitPIN = new System.Windows.Forms.TextBox();
             this.cashPaymentGrpbx.SuspendLayout();
+            this.creditCardPaymentGrpbx.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -74,86 +63,6 @@
             this.label1.Size = new System.Drawing.Size(375, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Please choose your mode of payment below, to complete your purchase!";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Card Holder Name :";
-            // 
-            // custNameTxtbx
-            // 
-            this.custNameTxtbx.Location = new System.Drawing.Point(180, 56);
-            this.custNameTxtbx.Name = "custNameTxtbx";
-            this.custNameTxtbx.Size = new System.Drawing.Size(290, 23);
-            this.custNameTxtbx.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 169);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "CVC :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 133);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Expiry Date :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Credit Card Number :";
-            // 
-            // creditCardNumTxtbx
-            // 
-            this.creditCardNumTxtbx.Location = new System.Drawing.Point(180, 92);
-            this.creditCardNumTxtbx.Name = "creditCardNumTxtbx";
-            this.creditCardNumTxtbx.Size = new System.Drawing.Size(178, 23);
-            this.creditCardNumTxtbx.TabIndex = 6;
-            // 
-            // CvcTxtbx
-            // 
-            this.CvcTxtbx.Location = new System.Drawing.Point(180, 166);
-            this.CvcTxtbx.Name = "CvcTxtbx";
-            this.CvcTxtbx.Size = new System.Drawing.Size(115, 23);
-            this.CvcTxtbx.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(107, 133);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 16);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "&?";
-            this.toolTip1.SetToolTip(this.label6, "Month/Year e.g. 05/19");
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(56, 169);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 16);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "&?";
-            this.toolTip1.SetToolTip(this.label8, "The last 3 digit at the back of your credit card");
             // 
             // label7
             // 
@@ -225,72 +134,6 @@
             this.button1.Text = "&Back to shop";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.BackToStore);
-            // 
-            // creditCardPaymentGrpbx
-            // 
-            this.creditCardPaymentGrpbx.Controls.Add(this.dtpExpiryDate);
-            this.creditCardPaymentGrpbx.Controls.Add(this.radioAmericanExp);
-            this.creditCardPaymentGrpbx.Controls.Add(this.radioMasterVisa);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label12);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label2);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label3);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label4);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label5);
-            this.creditCardPaymentGrpbx.Controls.Add(this.custNameTxtbx);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label8);
-            this.creditCardPaymentGrpbx.Controls.Add(this.creditCardNumTxtbx);
-            this.creditCardPaymentGrpbx.Controls.Add(this.CvcTxtbx);
-            this.creditCardPaymentGrpbx.Controls.Add(this.label6);
-            this.creditCardPaymentGrpbx.Location = new System.Drawing.Point(20, 128);
-            this.creditCardPaymentGrpbx.Name = "creditCardPaymentGrpbx";
-            this.creditCardPaymentGrpbx.Size = new System.Drawing.Size(501, 201);
-            this.creditCardPaymentGrpbx.TabIndex = 18;
-            this.creditCardPaymentGrpbx.TabStop = false;
-            this.creditCardPaymentGrpbx.Visible = false;
-            // 
-            // dtpExpiryDate
-            // 
-            this.dtpExpiryDate.CustomFormat = "MM/yy";
-            this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpExpiryDate.Location = new System.Drawing.Point(180, 128);
-            this.dtpExpiryDate.Name = "dtpExpiryDate";
-            this.dtpExpiryDate.ShowUpDown = true;
-            this.dtpExpiryDate.Size = new System.Drawing.Size(89, 23);
-            this.dtpExpiryDate.TabIndex = 16;
-            // 
-            // radioAmericanExp
-            // 
-            this.radioAmericanExp.AutoSize = true;
-            this.radioAmericanExp.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioAmericanExp.Location = new System.Drawing.Point(271, 23);
-            this.radioAmericanExp.Name = "radioAmericanExp";
-            this.radioAmericanExp.Size = new System.Drawing.Size(139, 20);
-            this.radioAmericanExp.TabIndex = 15;
-            this.radioAmericanExp.TabStop = true;
-            this.radioAmericanExp.Text = "American Express";
-            this.radioAmericanExp.UseVisualStyleBackColor = true;
-            // 
-            // radioMasterVisa
-            // 
-            this.radioMasterVisa.AutoSize = true;
-            this.radioMasterVisa.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioMasterVisa.Location = new System.Drawing.Point(112, 23);
-            this.radioMasterVisa.Name = "radioMasterVisa";
-            this.radioMasterVisa.Size = new System.Drawing.Size(128, 20);
-            this.radioMasterVisa.TabIndex = 14;
-            this.radioMasterVisa.TabStop = true;
-            this.radioMasterVisa.Text = "Mastercard/Visa";
-            this.radioMasterVisa.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(10, 24);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 16);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Card Type :";
             // 
             // cashPaymentGrpbx
             // 
@@ -391,11 +234,41 @@
             this.btnCancelPayment.UseVisualStyleBackColor = false;
             this.btnCancelPayment.Click += new System.EventHandler(this.CancelTransaction);
             // 
+            // creditCardPaymentGrpbx
+            // 
+            this.creditCardPaymentGrpbx.Controls.Add(this.txtBxSixDigitPIN);
+            this.creditCardPaymentGrpbx.Controls.Add(this.lblSixDigitPIN);
+            this.creditCardPaymentGrpbx.Location = new System.Drawing.Point(12, 137);
+            this.creditCardPaymentGrpbx.Name = "creditCardPaymentGrpbx";
+            this.creditCardPaymentGrpbx.Size = new System.Drawing.Size(528, 182);
+            this.creditCardPaymentGrpbx.TabIndex = 18;
+            this.creditCardPaymentGrpbx.TabStop = false;
+            this.creditCardPaymentGrpbx.Visible = false;
+            // 
+            // lblSixDigitPIN
+            // 
+            this.lblSixDigitPIN.AutoSize = true;
+            this.lblSixDigitPIN.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSixDigitPIN.Location = new System.Drawing.Point(38, 58);
+            this.lblSixDigitPIN.Name = "lblSixDigitPIN";
+            this.lblSixDigitPIN.Size = new System.Drawing.Size(179, 18);
+            this.lblSixDigitPIN.TabIndex = 0;
+            this.lblSixDigitPIN.Text = "Enter your Six-Digit PIN:";
+            // 
+            // txtBxSixDigitPIN
+            // 
+            this.txtBxSixDigitPIN.Location = new System.Drawing.Point(223, 53);
+            this.txtBxSixDigitPIN.Name = "txtBxSixDigitPIN";
+            this.txtBxSixDigitPIN.Size = new System.Drawing.Size(125, 23);
+            this.txtBxSixDigitPIN.TabIndex = 1;
+            // 
             // Payment
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(560, 440);
+            this.Controls.Add(this.creditCardPaymentGrpbx);
+            this.Controls.Add(this.cashPaymentGrpbx);
             this.Controls.Add(this.btnCancelPayment);
             this.Controls.Add(this.btnResetDiscount);
             this.Controls.Add(this.discountAppliedStatuslbl);
@@ -410,8 +283,6 @@
             this.Controls.Add(this.txtbxDiscountCode);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.creditCardPaymentGrpbx);
-            this.Controls.Add(this.cashPaymentGrpbx);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -420,10 +291,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
             this.Load += new System.EventHandler(this.Payment_Load);
-            this.creditCardPaymentGrpbx.ResumeLayout(false);
-            this.creditCardPaymentGrpbx.PerformLayout();
             this.cashPaymentGrpbx.ResumeLayout(false);
             this.cashPaymentGrpbx.PerformLayout();
+            this.creditCardPaymentGrpbx.ResumeLayout(false);
+            this.creditCardPaymentGrpbx.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,37 +303,26 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox custNameTxtbx;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox creditCardNumTxtbx;
-        private System.Windows.Forms.TextBox CvcTxtbx;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtbxDiscountCode;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button paymentConfirmbtn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label paymentlbl;
         private System.Windows.Forms.Button btnApplyDiscountCode;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox creditCardPaymentGrpbx;
         private System.Windows.Forms.GroupBox cashPaymentGrpbx;
         private System.Windows.Forms.TextBox txtbxCashPayment;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton cashPaymentRadio;
         private System.Windows.Forms.RadioButton creditCardRadio;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton radioAmericanExp;
-        private System.Windows.Forms.RadioButton radioMasterVisa;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dtpExpiryDate;
         private System.Windows.Forms.Label discountAppliedStatuslbl;
         private System.Windows.Forms.Button btnResetDiscount;
         private System.Windows.Forms.Button btnCancelPayment;
+        private System.Windows.Forms.GroupBox creditCardPaymentGrpbx;
+        private System.Windows.Forms.TextBox txtBxSixDigitPIN;
+        private System.Windows.Forms.Label lblSixDigitPIN;
     }
 }
 

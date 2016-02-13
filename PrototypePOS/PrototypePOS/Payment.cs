@@ -58,8 +58,8 @@ namespace PrototypePOS
 
             paymentlbl.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
-            creditCardNumTxtbx.MaxLength = 12;
-            CvcTxtbx.MaxLength = 3;
+            //creditCardNumTxtbx.MaxLength = 12;
+            //CvcTxtbx.MaxLength = 3;
 
             txtbxDiscountCode.CharacterCasing = CharacterCasing.Upper;
             discountAppliedStatuslbl.Visible = false;
@@ -160,8 +160,7 @@ namespace PrototypePOS
                 if (creditCardRadio.Checked) 
                 {
                     //All credentials not filled in
-                    if (String.IsNullOrEmpty(custNameTxtbx.Text) || String.IsNullOrEmpty(creditCardNumTxtbx.Text) ||
-                        String.IsNullOrEmpty(CvcTxtbx.Text) || !radioAmericanExp.Checked && !radioMasterVisa.Checked)
+                    if (String.IsNullOrEmpty(txtBxSixDigitPIN.Text))
                     {
                         MessageBox.Show(
                         "Please ensure that you have fill in all your credit card credentials to complete your payment.",
@@ -173,16 +172,8 @@ namespace PrototypePOS
                     //All credentials were filled in with valid input
                     else
                     {
-                        string cardType = "";
-                        if (radioMasterVisa.Checked) {
-                            cardType = radioMasterVisa.Text;
-                        }
-
-                        if (radioAmericanExp.Checked)
-                        {
-                            cardType = radioAmericanExp.Text;
-                        }
-                            /*When a successful payment is made, the PaymentMadeEvent will be invoked and send a boolean value of true to the POS*/
+                        DBPOS dbp = new DBPOS();
+                        /*When a successful payment is made, the PaymentMadeEvent will be invoked and send a boolean value of true to the POS*/
                             PaymentMade(
                                 this,
                                 new PaymentMadeEventArgs()
@@ -194,9 +185,6 @@ namespace PrototypePOS
                                     BeforeDiscountTotalAmount = beforeDiscount,
                                     DiscountedValue = discountedAmount,
                                     Total = total,
-                                    CardType = cardType,
-                                    CreditCardHolderName = custNameTxtbx.Text,
-                                    CreditCardNumber = creditCardNumTxtbx.Text,
                                     TransactionItems = transactionItems
                                 });
                             this.Close();
@@ -292,28 +280,28 @@ namespace PrototypePOS
         public class PaymentMadeEventArgs : EventArgs
     {
         private bool successfulPayment, isCreditCardPayment, isCashPayment, hasDiscount;
-        private string creditCardHolderName, cardType, creditCardNumber;
+        //private string creditCardHolderName, cardType, creditCardNumber;
         private decimal total, cashPaymentInput, changeDue, discountedValue, beforeDiscountTotalAmount;
         private BindingList<Apparel> transactionItems;
 
         //Properties
-        public string CreditCardHolderName
-        {
-            get { return creditCardHolderName; }
-            set { creditCardHolderName = value; }
-        }
+        //public string CreditCardHolderName
+        //{
+        //    get { return creditCardHolderName; }
+        //    set { creditCardHolderName = value; }
+        //}
 
-        public string CardType
-        {
-            get { return cardType; }
-            set { cardType = value; }
-        }
+        //public string CardType
+        //{
+        //    get { return cardType; }
+        //    set { cardType = value; }
+        //}
 
-        public string CreditCardNumber
-        {
-            get { return creditCardNumber; }
-            set { creditCardNumber = value; }
-        }
+        //public string CreditCardNumber
+        //{
+        //    get { return creditCardNumber; }
+        //    set { creditCardNumber = value; }
+        //}
 
         public decimal Total
         {

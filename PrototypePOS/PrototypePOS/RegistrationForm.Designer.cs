@@ -45,9 +45,18 @@
             this.txtBxFirstName = new System.Windows.Forms.TextBox();
             this.txtBxLastName = new System.Windows.Forms.TextBox();
             this.panelPg1 = new System.Windows.Forms.Panel();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.txtBxAddress = new System.Windows.Forms.TextBox();
+            this.txtBxMobileNo = new System.Windows.Forms.TextBox();
             this.lblMobileNo = new System.Windows.Forms.Label();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.panelPg2 = new System.Windows.Forms.Panel();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtBxSixDigitPIN = new System.Windows.Forms.TextBox();
+            this.txtBxCVC = new System.Windows.Forms.TextBox();
+            this.dtpExpiryDate = new System.Windows.Forms.DateTimePicker();
+            this.txtBxCreditCardNo = new System.Windows.Forms.TextBox();
+            this.txtBxCreditCardName = new System.Windows.Forms.TextBox();
             this.lblQnMarkExpiryDate = new System.Windows.Forms.Label();
             this.lblQnMarkSixDigitPIN = new System.Windows.Forms.Label();
             this.lblQnMarksCVC = new System.Windows.Forms.Label();
@@ -60,15 +69,6 @@
             this.radioMasterVisa = new System.Windows.Forms.RadioButton();
             this.lblCardType = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnNext = new System.Windows.Forms.Button();
-            this.txtBxAddress = new System.Windows.Forms.TextBox();
-            this.txtBxMobileNo = new System.Windows.Forms.TextBox();
-            this.txtBxCreditCardName = new System.Windows.Forms.TextBox();
-            this.txtBxCreditCardNo = new System.Windows.Forms.TextBox();
-            this.dtpExpiryDate = new System.Windows.Forms.DateTimePicker();
-            this.txtBxCVC = new System.Windows.Forms.TextBox();
-            this.txtBxSixDigitPIN = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.panelPg1.SuspendLayout();
             this.panelPg2.SuspendLayout();
             this.SuspendLayout();
@@ -236,6 +236,32 @@
             this.panelPg1.Size = new System.Drawing.Size(268, 339);
             this.panelPg1.TabIndex = 18;
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(97, 307);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(58, 23);
+            this.btnNext.TabIndex = 27;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // txtBxAddress
+            // 
+            this.txtBxAddress.Location = new System.Drawing.Point(108, 237);
+            this.txtBxAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBxAddress.Multiline = true;
+            this.txtBxAddress.Name = "txtBxAddress";
+            this.txtBxAddress.Size = new System.Drawing.Size(151, 60);
+            this.txtBxAddress.TabIndex = 26;
+            // 
+            // txtBxMobileNo
+            // 
+            this.txtBxMobileNo.Location = new System.Drawing.Point(108, 204);
+            this.txtBxMobileNo.Name = "txtBxMobileNo";
+            this.txtBxMobileNo.Size = new System.Drawing.Size(100, 20);
+            this.txtBxMobileNo.TabIndex = 25;
+            // 
             // lblMobileNo
             // 
             this.lblMobileNo.AutoSize = true;
@@ -280,6 +306,54 @@
             this.panelPg2.Name = "panelPg2";
             this.panelPg2.Size = new System.Drawing.Size(271, 313);
             this.panelPg2.TabIndex = 18;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(97, 260);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(58, 24);
+            this.btnSubmit.TabIndex = 52;
+            this.btnSubmit.Text = "&Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            // 
+            // txtBxSixDigitPIN
+            // 
+            this.txtBxSixDigitPIN.Location = new System.Drawing.Point(148, 218);
+            this.txtBxSixDigitPIN.Name = "txtBxSixDigitPIN";
+            this.txtBxSixDigitPIN.Size = new System.Drawing.Size(100, 20);
+            this.txtBxSixDigitPIN.TabIndex = 51;
+            // 
+            // txtBxCVC
+            // 
+            this.txtBxCVC.Location = new System.Drawing.Point(148, 179);
+            this.txtBxCVC.Name = "txtBxCVC";
+            this.txtBxCVC.Size = new System.Drawing.Size(100, 20);
+            this.txtBxCVC.TabIndex = 48;
+            // 
+            // dtpExpiryDate
+            // 
+            this.dtpExpiryDate.CustomFormat = "MM/yy";
+            this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpExpiryDate.Location = new System.Drawing.Point(148, 144);
+            this.dtpExpiryDate.Name = "dtpExpiryDate";
+            this.dtpExpiryDate.ShowUpDown = true;
+            this.dtpExpiryDate.Size = new System.Drawing.Size(86, 20);
+            this.dtpExpiryDate.TabIndex = 44;
+            // 
+            // txtBxCreditCardNo
+            // 
+            this.txtBxCreditCardNo.Location = new System.Drawing.Point(148, 108);
+            this.txtBxCreditCardNo.Name = "txtBxCreditCardNo";
+            this.txtBxCreditCardNo.Size = new System.Drawing.Size(100, 20);
+            this.txtBxCreditCardNo.TabIndex = 38;
+            // 
+            // txtBxCreditCardName
+            // 
+            this.txtBxCreditCardName.Location = new System.Drawing.Point(148, 74);
+            this.txtBxCreditCardName.Name = "txtBxCreditCardName";
+            this.txtBxCreditCardName.Size = new System.Drawing.Size(100, 20);
+            this.txtBxCreditCardName.TabIndex = 32;
             // 
             // lblQnMarkExpiryDate
             // 
@@ -395,88 +469,14 @@
             this.lblCardType.TabIndex = 19;
             this.lblCardType.Text = "Card Type:";
             // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(97, 307);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(58, 23);
-            this.btnNext.TabIndex = 27;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // txtBxAddress
-            // 
-            this.txtBxAddress.Location = new System.Drawing.Point(108, 237);
-            this.txtBxAddress.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBxAddress.Multiline = true;
-            this.txtBxAddress.Name = "txtBxAddress";
-            this.txtBxAddress.Size = new System.Drawing.Size(151, 60);
-            this.txtBxAddress.TabIndex = 26;
-            // 
-            // txtBxMobileNo
-            // 
-            this.txtBxMobileNo.Location = new System.Drawing.Point(108, 204);
-            this.txtBxMobileNo.Name = "txtBxMobileNo";
-            this.txtBxMobileNo.Size = new System.Drawing.Size(100, 20);
-            this.txtBxMobileNo.TabIndex = 25;
-            // 
-            // txtBxCreditCardName
-            // 
-            this.txtBxCreditCardName.Location = new System.Drawing.Point(148, 74);
-            this.txtBxCreditCardName.Name = "txtBxCreditCardName";
-            this.txtBxCreditCardName.Size = new System.Drawing.Size(100, 20);
-            this.txtBxCreditCardName.TabIndex = 32;
-            // 
-            // txtBxCreditCardNo
-            // 
-            this.txtBxCreditCardNo.Location = new System.Drawing.Point(148, 108);
-            this.txtBxCreditCardNo.Name = "txtBxCreditCardNo";
-            this.txtBxCreditCardNo.Size = new System.Drawing.Size(100, 20);
-            this.txtBxCreditCardNo.TabIndex = 38;
-            // 
-            // dtpExpiryDate
-            // 
-            this.dtpExpiryDate.CustomFormat = "MM/yy";
-            this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpExpiryDate.Location = new System.Drawing.Point(148, 144);
-            this.dtpExpiryDate.Name = "dtpExpiryDate";
-            this.dtpExpiryDate.ShowUpDown = true;
-            this.dtpExpiryDate.Size = new System.Drawing.Size(86, 20);
-            this.dtpExpiryDate.TabIndex = 44;
-            // 
-            // txtBxCVC
-            // 
-            this.txtBxCVC.Location = new System.Drawing.Point(148, 179);
-            this.txtBxCVC.Name = "txtBxCVC";
-            this.txtBxCVC.Size = new System.Drawing.Size(100, 20);
-            this.txtBxCVC.TabIndex = 48;
-            // 
-            // txtBxSixDigitPIN
-            // 
-            this.txtBxSixDigitPIN.Location = new System.Drawing.Point(148, 218);
-            this.txtBxSixDigitPIN.Name = "txtBxSixDigitPIN";
-            this.txtBxSixDigitPIN.Size = new System.Drawing.Size(100, 20);
-            this.txtBxSixDigitPIN.TabIndex = 51;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(97, 260);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(58, 24);
-            this.btnSubmit.TabIndex = 52;
-            this.btnSubmit.Text = "&Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 449);
-            this.Controls.Add(this.panelPg2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblErrorRegistration);
+            this.Controls.Add(this.panelPg2);
             this.Controls.Add(this.panelPg1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

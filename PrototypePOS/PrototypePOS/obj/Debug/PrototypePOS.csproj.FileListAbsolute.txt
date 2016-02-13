@@ -77,3 +77,5 @@ D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\Prot
 D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.VendorSignUp.resources
 D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.csproj.GenerateResource.Cache
 D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.LoadVendor.resources
+D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.ChangeAccountSettings.resources
+D:\Alam\Documents\GitHub\Prototype_Alam\PrototypePOS\PrototypePOS\obj\Debug\PrototypePOS.AddCategory.resources

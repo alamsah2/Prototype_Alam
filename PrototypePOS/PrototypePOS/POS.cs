@@ -464,9 +464,9 @@ namespace PrototypePOS
                     receipt.BeforeDiscountTotalAmount = e.BeforeDiscountTotalAmount;
                     receipt.DiscountedValue = e.DiscountedValue;
                     receipt.TransactionAmount = e.Total;
-                    receipt.CardType = e.CardType;
-                    receipt.CreditCardHolderName = e.CreditCardHolderName;
-                    receipt.CreditCardNumber = e.CreditCardNumber;
+                    //receipt.CardType = e.CardType;
+                    //receipt.CreditCardHolderName = e.CreditCardHolderName;
+                    //receipt.CreditCardNumber = e.CreditCardNumber;
                     receipt.Transaction.TransactionItems = e.TransactionItems;
                     receipt.ShowDialog();
                 }

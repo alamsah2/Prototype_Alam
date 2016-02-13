@@ -54,6 +54,7 @@ namespace PrototypePOS
                     Button addCategoryBtn = new Button();
                     addCategoryBtn.Size = new Size(124, 52);
                     addCategoryBtn.Text = "Add Category";
+                    addCategoryBtn.Click += AddCategory;
 
                     Button addProductBtn = new Button();
                     addProductBtn.Size = new Size(124, 52);
@@ -74,7 +75,9 @@ namespace PrototypePOS
 
                     Button changeAccountDetailsBtn = new Button();
                     changeAccountDetailsBtn.Size = new Size(124, 52);
-                    changeAccountDetailsBtn.Text = "Change Account Password";
+                    changeAccountDetailsBtn.Text = "Change Account Details";
+                    changeAccountDetailsBtn.Click += ChangeAccountSettings;
+
 
                     this.Controls.Add(AdminPanel);
                     AdminPanel.Controls.Add(viewPOSBtn);
@@ -114,6 +117,7 @@ namespace PrototypePOS
                     changeAccountDetailsBtn = new Button();
                     changeAccountDetailsBtn.Size = new Size(124, 52);
                     changeAccountDetailsBtn.Text = "Change Account Details";
+                    changeAccountDetailsBtn.Click += ChangeAccountSettings;
 
                     this.Controls.Add(CustomerPanel);
                     CustomerPanel.Controls.Add(viewPOSBtn);
@@ -163,13 +167,21 @@ namespace PrototypePOS
                 e.Cancel = true;
             }
         }
-
+        private void AddCategory(object sender, EventArgs e)
+        {
+            AddCategory ac = new AddCategory();
+            ac.ShowDialog();
+        }
         private void OpenPOS(object sender, EventArgs e) {
             POS pos = new POS();
             pos.Store = new Store();
             pos.ShowDialog();
         }
-
+        private void ChangeAccountSettings(object sender, EventArgs e)
+        {
+            ChangeAccountSettings cas = new PrototypePOS.ChangeAccountSettings();
+            cas.ShowDialog();
+        }
         private void OpenAddVendor(object sender, EventArgs e)
         {
             VendorSignUp vsu = new VendorSignUp();

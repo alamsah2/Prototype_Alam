@@ -46,8 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apparel.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="ChangeAccountSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeAccountSettings.Designer.cs">
+      <DependentUpon>ChangeAccountSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBPOS.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="LoadVendor.cs">
@@ -117,6 +129,12 @@
     <Compile Include="VendorSignUp.Designer.cs">
       <DependentUpon>VendorSignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeAccountSettings.resx">
+      <DependentUpon>ChangeAccountSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoadVendor.resx">
       <DependentUpon>LoadVendor.cs</DependentUpon>
     </EmbeddedResource>
