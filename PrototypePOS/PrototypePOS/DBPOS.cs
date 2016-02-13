@@ -12,9 +12,41 @@ using System.Windows.Forms;
 namespace PrototypePOS
 {
     class DBPOS
-    {
-        private string datasource, database;
+    {   
+       
 
+        private string LoadInfo()
+        {
+
+            string datasource="", database="";
+            string connectionString="";
+            if (!File.Exists("data/database_a.txt"))
+            {
+                MessageBox.Show("database.txt can't be found!");
+            }
+
+            else
+            {
+                using (StreamReader sr = new StreamReader("data/database_a.txt"))
+                {
+                    while (sr.Peek() >= 0)
+                    {
+                     
+                        string str;
+                        string[] strArray;
+                        str = sr.ReadLine();
+
+                        strArray = Regex.Split(str, ", ");
+                        datasource = strArray[0];
+                        database = strArray[1];
+
+
+                    }
+                }
+            }
+            return connectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+
+        }
         public List<User> GetUserAccounts()
         {
             using (SqlConnection conn = new SqlConnection())
@@ -25,33 +57,12 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
-
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
+                          
                             List<User> users = new List<User>();
                             try
                             {
 
-                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                                conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
                             cmd.CommandText = "SELECT Account.Username, Account.Password, AccountType.Description FROM Account INNER JOIN AccountType ON Account.AccountType= AccountType.AccountTypeID";
                             da.SelectCommand = cmd;
@@ -92,33 +103,12 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
-
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
                           
+                                         
                             try
                             {
 
-                                conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                                conn.ConnectionString = LoadInfo();
                                 cmd.Connection = conn;
                                 cmd.CommandText =  string.Format("SELECT AccountID FROM Account where username='{0}'",username);
                                 da.SelectCommand = cmd;
@@ -149,7 +139,61 @@ namespace PrototypePOS
                 }
             }
         }
+        public bool ValidateUsername( string username)
+        {
+            bool usernameStatus = false;
 
+            
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+
+                            try
+                            {
+
+                                conn.ConnectionString = LoadInfo();
+                                cmd.Connection = conn;
+                                cmd.CommandText = string.Format("SELECT Username FROM Account where Username = '{0}'", username);
+                                da.SelectCommand = cmd;
+
+
+
+                                conn.Open();
+                                da.Fill(table);
+                                if (table.Rows.Count > 0)
+                                {
+                                    usernameStatus = false;
+                                }
+                                else if(table.Rows.Count==0)
+                                {
+                                    usernameStatus = true;
+                                }
+                                else
+                                {   //if any error happens
+                                    usernameStatus = false;
+                                }
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+                            return usernameStatus;
+                        }
+                    }
+                }
+            }
+        }
         public void InsertAccount(string txtBxEmail, string txtBxName, string txtBxPassword, string dateOfRegistration, int accountType)
         {
 
@@ -162,30 +206,10 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
 
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
 
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
 
-                                    }
-                                }
-                            }
-
-                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                            conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
                             cmd.CommandText = (string.Format("Insert into Account Values('{0}','{1}','{2}',{3},{4})", txtBxName, txtBxPassword, txtBxEmail, dateOfRegistration, accountType));
 
@@ -211,9 +235,8 @@ namespace PrototypePOS
                     }
                 }
             }
-        }
-                
-        public void InsertCustomer(int AccountID,string txtBxFirstName, string txtBxLastName, string txtBxMobileNo,string DOB)
+        }                
+        public void InsertCustomer(int AccountID,string txtBxFirstName, string txtBxLastName, string txtBxMobileNo,DateTime DOB)
         { 
 
             using (SqlConnection conn = new SqlConnection())
@@ -225,33 +248,10 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
 
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
-
-                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                            conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
-                            cmd.CommandText = (string.Format("Insert into Customer Values ({0},'{1}','{2}','{3}',{4})",AccountID,txtBxFirstName,txtBxLastName,
-                                txtBxMobileNo, DOB));
+                            cmd.CommandText = (string.Format("Insert into Customer Values ({0},'{1}','{2}','{3}','{4}')",AccountID,txtBxFirstName,txtBxLastName, txtBxMobileNo, DOB.ToString("yyyy-MM-dd")));
 
 
                             try
@@ -263,7 +263,7 @@ namespace PrototypePOS
 
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message);
+                                MessageBox.Show(ex.Message,"customer");
                             }
 
                             finally
@@ -276,8 +276,7 @@ namespace PrototypePOS
                 }
             }
         }
-
-        public void InsertCreditCard(int AccountID,string txtBxCreditCardName,int txtBxCreditCardNo, DateTime dtpExpiryDate, int txtBxCVC,int txtBxSixDigitPIN)
+        public void InsertCreditCard(int AccountID,string txtBxCreditCardName,long txtBxCreditCardNo, DateTime dtpExpiryDate, int txtBxCVC,int txtBxSixDigitPIN, string txtBxCreditCardType)
         {
 
             using (SqlConnection conn = new SqlConnection())
@@ -289,33 +288,11 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
 
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
-
-                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                            conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
-                            cmd.CommandText = (string.Format("Insert into CreditCard Values ({0},'{1}',{2},'{3}',{4},{5})", AccountID, txtBxCreditCardName,txtBxCreditCardNo,
-                                dtpExpiryDate,txtBxCVC,txtBxSixDigitPIN));
+                            cmd.CommandText = (string.Format("Insert into CreditCard Values ({0},'{1}',{2},'{3}',{4},{5},'{6}')", AccountID, txtBxCreditCardName,txtBxCreditCardNo,
+                                dtpExpiryDate.ToString("yyyy-MM-dd"), txtBxCVC,txtBxSixDigitPIN,txtBxCreditCardType));
 
 
                             try
@@ -327,7 +304,7 @@ namespace PrototypePOS
 
                             catch (Exception ex)
                             {
-                                MessageBox.Show(ex.Message);
+                                MessageBox.Show(ex.Message,"cc");
                             }
 
                             finally
@@ -340,8 +317,6 @@ namespace PrototypePOS
                 }
             }
         }
-
-
         public void InsertVendor(int accountID, string txtBxName, string txtBxContactPerson, string txtBxContactNo)
         {
 
@@ -354,31 +329,7 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
-
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
-
-
-                            conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                            conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
                             
                             cmd.CommandText = "SELECT Account.AccountID FROM Account";
@@ -407,7 +358,6 @@ namespace PrototypePOS
                 }
             }
         }
-
         public List<Vendor> LoadVendorAccounts()
         {
 
@@ -419,34 +369,13 @@ namespace PrototypePOS
                     {
                         using (DataTable table = new DataTable())
                         {
-                            if (!File.Exists("data/database_a.txt"))
-                            {
-                                MessageBox.Show("database_a.txt can't be found!");
-                            }
-
-                            else
-                            {
-                                using (StreamReader sr = new StreamReader("data/database_a.txt"))
-                                {
-                                    while (sr.Peek() >= 0)
-                                    {
-                                        string str;
-                                        string[] strArray;
-                                        str = sr.ReadLine();
-
-                                        strArray = Regex.Split(str, ", ");
-                                        datasource = strArray[0];
-                                        database = strArray[1];
-
-                                    }
-                                }
-                            }
+                          
                             List<Vendor> vendors = new List<Vendor>();
 
 
                             try
                             {
-                                conn.ConnectionString = string.Format("Data Source={0};database={1};integrated security=true;", datasource, database);
+                                conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
                             cmd.CommandText = "SELECT VendorID, Vendor.AccountID, Vendor.Name, Vendor.ContactPerson, Vendor.ContactNo FROM Vendor";
                             da.SelectCommand = cmd;

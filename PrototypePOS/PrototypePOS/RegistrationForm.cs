@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace PrototypePOS
 {
-    
     public partial class RegistrationForm : Form
-    { 
+    {
+        private List<User> users;
+        private int current = 0;
+
         public RegistrationForm()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace PrototypePOS
             txtBxMobileNo.MaxLength = 8;
             txtBxSixDigitPIN.MaxLength = 6;
             txtBxCreditCardNo.MaxLength = 16;
-            
+
             lblErrorRegistration.Text = "";
             txtBxPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             txtBxPassword.PasswordChar = '\u2022';
@@ -35,24 +38,43 @@ namespace PrototypePOS
         }
 
 
-
         private void btnNext_Click(object sender, EventArgs e)
         {
-
+            DBPOS dbp = new DBPOS();
+         
+            //start of validation
             if (String.IsNullOrEmpty(txtBxUsername.Text) || String.IsNullOrEmpty(txtBxPassword.Text) ||
                    String.IsNullOrEmpty(txtBxFirstName.Text) || String.IsNullOrEmpty(txtBxLastName.Text) ||
-                     String.IsNullOrEmpty(txtBxEmail.Text) || String.IsNullOrEmpty(txtBxAddress.Text))
+                     String.IsNullOrEmpty(txtBxEmail.Text) || String.IsNullOrEmpty(txtBxAddress.Text) ||
+                      String.IsNullOrEmpty(txtBxMobileNo.Text))
+
+
             {
                 lblErrorRegistration.Text = "Please ensure all fields are entered";
                 lblErrorRegistration.Visible = true;
 
 
             }
+            else if (dbp.ValidateUsername(txtBxUsername.Text) == false)
+            {
+                lblErrorRegistration.Text = string.Format("Username \'{0}\' already exists!",txtBxUsername.Text);
+                lblErrorRegistration.Visible = true;
+            }
+            else if (!Regex.Match(txtBxMobileNo.Text, @"^+\d{0,9}$").Success)
+            {
+                lblErrorRegistration.Text = "Please enter a valid Mobile Number";
+                lblErrorRegistration.Visible = true;
+            }
+            else if (!Regex.Match(txtBxEmail.Text, @"(@)(.+)$").Success)
+            {
+                lblErrorRegistration.Text = "Please enter a valid Email";
+                lblErrorRegistration.Visible = true;
+            }
             else {
                 lblErrorRegistration.Text = "";
                 panelPg1.Visible = false;
                 panelPg2.Visible = true;
-            }
+            } //end of validation
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -93,8 +115,8 @@ namespace PrototypePOS
                 }
                 else {
                     dbp.InsertAccount(txtBxEmail.Text, txtBxUsername.Text, txtBxPassword.Text, "GETDATE()", 1);
-                    dbp.InsertCustomer(dbp.GetAccountID(txtBxUsername.Text), txtBxFirstName.Text, txtBxLastName.Text, txtBxMobileNo.Text, dtpDOB.Text);
-                    MessageBox.Show("Your account has been created. without payment");
+                    dbp.InsertCustomer(dbp.GetAccountID(txtBxUsername.Text), txtBxFirstName.Text, txtBxLastName.Text, txtBxMobileNo.Text, dtpDOB.Value.Date);
+                    MessageBox.Show("Your account has been created, without payment");
                     this.Close();
                 }
 
@@ -103,10 +125,9 @@ namespace PrototypePOS
             else
             {
                 dbp.InsertAccount(txtBxEmail.Text, txtBxUsername.Text, txtBxPassword.Text, "GETDATE()", 1);
-                dbp.InsertCustomer(dbp.GetAccountID(txtBxUsername.Text), txtBxFirstName.Text, txtBxLastName.Text, txtBxMobileNo.Text, dtpDOB.Text);
-                dbp.InsertCreditCard(dbp.GetAccountID(txtBxUsername.Text), txtBxCreditCardName.Text, int.Parse(txtBxCreditCardNo.Text), DateTime.Now.Date,
-                      int.Parse(txtBxCVC.Text), int.Parse(txtBxSixDigitPIN.Text));
-                MessageBox.Show("Your account has been created. with payment");
+                dbp.InsertCustomer(dbp.GetAccountID(txtBxUsername.Text), txtBxFirstName.Text, txtBxLastName.Text, txtBxMobileNo.Text, dtpDOB.Value.Date);
+                dbp.InsertCreditCard(dbp.GetAccountID(txtBxUsername.Text), txtBxCreditCardName.Text, long.Parse(txtBxCreditCardNo.Text), dtpExpiryDate.Value,int.Parse(txtBxCVC.Text), int.Parse(txtBxSixDigitPIN.Text), cardType);
+                MessageBox.Show("Your account has been created, with payment");
                 this.Close();
             }
         }

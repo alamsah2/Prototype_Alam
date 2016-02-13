@@ -72,9 +72,9 @@ namespace PrototypePOS
                     salesReportBtn.Size = new Size(124, 52);
                     salesReportBtn.Text = "Sales Report";
 
-                    Button changePasswordBtn = new Button();
-                    changePasswordBtn.Size = new Size(124, 52);
-                    changePasswordBtn.Text = "Change Account Password";
+                    Button changeAccountDetailsBtn = new Button();
+                    changeAccountDetailsBtn.Size = new Size(124, 52);
+                    changeAccountDetailsBtn.Text = "Change Account Password";
 
                     this.Controls.Add(AdminPanel);
                     AdminPanel.Controls.Add(viewPOSBtn);
@@ -84,7 +84,7 @@ namespace PrototypePOS
                     AdminPanel.Controls.Add(viewVendorsBtn);
                     AdminPanel.Controls.Add(viewProductsBtn);
                     AdminPanel.Controls.Add(salesReportBtn);
-                    AdminPanel.Controls.Add(changePasswordBtn);
+                    AdminPanel.Controls.Add(changeAccountDetailsBtn);
                     break;
 
                 case "Vendor":
@@ -110,6 +110,10 @@ namespace PrototypePOS
                     viewPOSBtn.Size = new Size(124, 52);
                     viewPOSBtn.Text = "&Shop";
                     viewPOSBtn.Click += OpenPOS;
+
+                    changeAccountDetailsBtn = new Button();
+                    changeAccountDetailsBtn.Size = new Size(124, 52);
+                    changeAccountDetailsBtn.Text = "Change Account Details";
 
                     this.Controls.Add(CustomerPanel);
                     CustomerPanel.Controls.Add(viewPOSBtn);
