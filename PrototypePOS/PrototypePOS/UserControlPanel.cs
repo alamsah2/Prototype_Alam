@@ -121,6 +121,8 @@ namespace PrototypePOS
 
                     this.Controls.Add(CustomerPanel);
                     CustomerPanel.Controls.Add(viewPOSBtn);
+                    CustomerPanel.Controls.Add(changeAccountDetailsBtn);
+
                     break;
 
                 default:
@@ -180,6 +182,7 @@ namespace PrototypePOS
         private void ChangeAccountSettings(object sender, EventArgs e)
         {
             ChangeAccountSettings cas = new PrototypePOS.ChangeAccountSettings();
+            cas.CurrentUser = user;
             cas.ShowDialog();
         }
         private void OpenAddVendor(object sender, EventArgs e)

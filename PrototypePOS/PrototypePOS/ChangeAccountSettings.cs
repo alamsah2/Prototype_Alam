@@ -15,6 +15,21 @@ namespace PrototypePOS
         private DBPOS dbp;
         private int current = 0;
         private List<User> users;
+        private User user;
+
+        public User CurrentUser
+        {
+            get
+            {
+                return user;
+            }
+
+            set
+            {
+                user = value;
+            }
+        }
+
         public ChangeAccountSettings()
         {
             InitializeComponent();
@@ -22,16 +37,38 @@ namespace PrototypePOS
 
         public void ChangeAccountSettings_Load(object sender, EventArgs e)
         {
+            txtBxPasswordNew.PasswordChar = '\u2022';
             txtBxCVC.MaxLength = 3;
             txtBxCreditCardNo.MaxLength = 16;
-            txtBxMobileNo.MaxLength = 8;
+            txtBxMobileNoNew.MaxLength = 8;
             txtBxSixDigitPIN.MaxLength = 6;
             txtBxCreditCardNo.MaxLength = 16;
-            lblLoginErrorStatus.Text = "";
-            panelPg1.Visible = true;
-            panelPg2.Visible = false;
-            panelPg3.Visible = false;
-        }
+            if (user.AccountType == "Administrator" || user.AccountType == "Vendor")
+            {
+                dbp = new DBPOS();
+                users = dbp.GetUserAccounts();
+                panelPg2.Visible = true;
+                CustPanel.Visible = false;
+                PassEmailPanel.Visible = true;
+                panelPg3.Visible = false;
+                PassEmailPanel.Location = new Point(37, 31);
+                txtBxPasswordNew.Text = users[0].Password;
+                txtBxEmailNew.Text = users[0].Email;
+            }
+            else {
+                dbp = new DBPOS();
+                users = dbp.GetUserInfo(user.AccountID);
+                txtBxFirstNameNew.Text = users[0].FirstName;
+                txtBxLastNameNew.Text = users[0].LastName;
+                txtBxMobileNoNew.Text = users[0].MobileNo.ToString();
+                txtBxPasswordNew.Text = users[0].Password;
+                txtBxEmailNew.Text = users[0].Email;
+
+                panelPg2.Visible = true;
+                panelPg3.Visible = false;
+            }
+            }
+
 
         private void btnCreditCardDetails_Click(object sender, EventArgs e)
         {
@@ -42,8 +79,8 @@ namespace PrototypePOS
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             dbp = new DBPOS();
-            dbp.UpdateAccount(txtBxPasswordNew.Text,txtBxEmailNew.Text,txtBxUsernameOld.Text);
-            dbp.UpdateCustomer(txtBxFirstNameNew.Text, txtBxLastNameNew.Text, txtBxMobileNoNew.Text,txtBxUsernameOld.Text);
+            dbp.UpdateAccount(txtBxPasswordNew.Text,txtBxEmailNew.Text,user.Username);
+            dbp.UpdateCustomer(txtBxFirstNameNew.Text, txtBxLastNameNew.Text, txtBxMobileNoNew.Text,user.Username);
             MessageBox.Show("Your account has been updated, without payment changes");
             this.Close();
         }
@@ -61,44 +98,13 @@ namespace PrototypePOS
             }
 
             dbp = new DBPOS();
-            dbp.UpdateAccount(txtBxEmailNew.Text, txtBxPasswordNew.Text, txtBxUsernameOld.Text);
-            dbp.UpdateCustomer(txtBxFirstNameNew.Text, txtBxLastNameNew.Text, txtBxMobileNoNew.Text, txtBxUsernameOld.Text);
-            dbp.InsertCreditCard(dbp.GetAccountID(txtBxUsernameOld.Text), txtBxCreditCardName.Text, long.Parse(txtBxCreditCardNo.Text), dtpExpiryDate.Value, int.Parse(txtBxCVC.Text), int.Parse(txtBxSixDigitPIN.Text), cardType);
+            dbp.UpdateAccount(txtBxEmailNew.Text, txtBxPasswordNew.Text, user.Username);
+            dbp.UpdateCustomer(txtBxFirstNameNew.Text, txtBxLastNameNew.Text, txtBxMobileNoNew.Text, user.Username);
+            dbp.InsertCreditCard(dbp.GetAccountID(user.Username), txtBxCreditCardName.Text, long.Parse(txtBxCreditCardNo.Text), dtpExpiryDate.Value, int.Parse(txtBxCVC.Text), int.Parse(txtBxSixDigitPIN.Text), cardType);
 
             MessageBox.Show("Your account has been updated, with payment changes");
             this.Close();
 
-        }
-
-        private void btnLoginVerification_Click(object sender, EventArgs e)
-        {
-            dbp = new DBPOS();
-            users = dbp.GetUserAccounts();
-            current = 0;
-
-            if (String.IsNullOrEmpty(txtBxUsernameOld.Text) && String.IsNullOrEmpty(txtBxPasswordOld.Text))
-            {
-                lblLoginErrorStatus.Text = "Please ensure all fields are entered";
-                txtBxUsernameOld.ResetText();
-                txtBxPasswordOld.ResetText();
-            }
-            else if (users.Exists(u => u.Username.Equals(txtBxUsernameOld.Text)))
-            {
-                current = users.FindIndex(u => u.Username.Equals(txtBxUsernameOld.Text));
-                if (users[current].Username.Equals(txtBxUsernameOld.Text) && users[current].Password.Equals(txtBxPasswordOld.Text))
-                {
-                    lblLoginErrorStatus.Text = "";
-                    txtBxUsernameOld.ResetText();
-                    txtBxPasswordOld.ResetText();
-                    panelPg1.Visible = false;
-                    panelPg2.Visible = true;
-                }
-            }
-            else {
-                txtBxUsernameOld.ResetText();
-                txtBxPasswordOld.ResetText();
-                lblLoginErrorStatus.Text = "Either the username or password was incorrect.";
-            }
         }
 
         private void btnCancelpanel3_Click(object sender, EventArgs e)
@@ -112,9 +118,6 @@ namespace PrototypePOS
             this.Close();
         }
 
-        private void btnCancelLogin_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
     }
 }

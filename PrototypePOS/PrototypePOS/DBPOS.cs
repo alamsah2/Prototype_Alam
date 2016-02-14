@@ -64,7 +64,7 @@ namespace PrototypePOS
 
                                 conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
-                            cmd.CommandText = "SELECT Account.Username, Account.Password, AccountType.Description FROM Account INNER JOIN AccountType ON Account.AccountType= AccountType.AccountTypeID";
+                                cmd.CommandText = "SELECT Account.AccountID, Account.Email, Account.Username, Account.Password, AccountType.Description FROM Account INNER JOIN AccountType ON Account.AccountType= AccountType.AccountTypeID";
                             da.SelectCommand = cmd;
 
                           
@@ -73,7 +73,52 @@ namespace PrototypePOS
                                 da.Fill(table);
                                 foreach (DataRow row in table.Rows)
                                 {
-                                    users.Add(new User(row["Username"].ToString(), row["Password"].ToString(), row["Description"].ToString()));
+                                    users.Add(new User(row["Username"].ToString(), row["Password"].ToString(), row["Description"].ToString(), row["Email"].ToString(), int.Parse(row["AccountID"].ToString())));
+                                }
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+                            finally
+                            {
+                                conn.Close();
+                            }
+                            return users;
+                        }
+                    }
+                }
+            }
+        }
+        public List<User> GetUserInfo(int accountID)
+        {  
+            using (SqlConnection conn = new SqlConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        using (DataTable table = new DataTable())
+                        {
+
+                            List<User> users = new List<User>();
+                            try
+                            {
+
+                                conn.ConnectionString = LoadInfo();
+                                cmd.Connection = conn;
+                                cmd.CommandText = string.Format("SELECT Account.AccountID, Account.Email, Account.Username, Account.Password, AccountType.Description, Customer.FirstName, Customer.LastName,Customer.MobileNo FROM Account INNER JOIN AccountType ON Account.AccountType= AccountType.AccountTypeID INNER JOIN Customer ON Customer.AccountID={0} where Account.AccountID=Customer.AccountID ", accountID);
+                                da.SelectCommand = cmd;
+
+
+
+                                conn.Open();
+                                da.Fill(table);
+                                foreach (DataRow row in table.Rows)
+                                {
+                                    users.Add(new User(row["Username"].ToString(), row["Password"].ToString(), row["Description"].ToString(), row["Email"].ToString(), int.Parse(row["AccountID"].ToString()), row["FirstName"].ToString(), row["LastName"].ToString(), int.Parse(row["MobileNo"].ToString())));
                                 }
                             }
 
@@ -244,7 +289,6 @@ namespace PrototypePOS
                 }
             }
         }
-
         public void InsertAccount(string txtBxEmail, string txtBxName, string txtBxPassword, string dateOfRegistration, int accountType)
         {
 
@@ -287,7 +331,7 @@ namespace PrototypePOS
                 }
             }
         }
-        public void UpdateAccount( string txtBxPassword, string txtBxEmail, string txtBxUsernameOld)
+        public void UpdateAccount( string txtBxPassword, string txtBxEmail, string username)
         {
 
             using (SqlConnection conn = new SqlConnection())
@@ -304,7 +348,7 @@ namespace PrototypePOS
 
                             conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
-                            cmd.CommandText = (string.Format("UPDATE Account SET Password = '{0}',Email = '{1}' WHERE AccountID='{2}'", txtBxPassword, txtBxEmail, GetAccountID(txtBxUsernameOld)));
+                            cmd.CommandText = (string.Format("UPDATE Account SET Password = '{0}',Email = '{1}' WHERE AccountID={2}", txtBxPassword, txtBxEmail, GetAccountID(username)));
                             //cmd.CommandText = (string.Format("UPDATE Account SET (Password,Email) ([Password] = '{0}',[Email] = '{1}' WHERE Username='{2}')", txtBxPassword, txtBxEmail, txtBxUsernameOld));
 
                             try
@@ -329,7 +373,7 @@ namespace PrototypePOS
                 }
             }
         }
-        public void UpdateCustomer(string txtBxFirstName, string txtBxLastName, string txtBxMobileNo, string txtBxUsernameOld)
+        public void UpdateCustomer(string txtBxFirstName, string txtBxLastName, string txtBxMobileNo, string username)
         {
 
             using (SqlConnection conn = new SqlConnection())
@@ -344,7 +388,7 @@ namespace PrototypePOS
 
                             conn.ConnectionString = LoadInfo();
                             cmd.Connection = conn;
-                            cmd.CommandText = (string.Format("UPDATE Customer SET FirstName='{0}',LastName='{1}',MobileNo='{2}' where AccountID='{3}'",txtBxFirstName, txtBxLastName, txtBxMobileNo,GetAccountID(txtBxUsernameOld)));
+                            cmd.CommandText = (string.Format("UPDATE Customer SET FirstName='{0}',LastName='{1}',MobileNo='{2}' where AccountID={3}",txtBxFirstName, txtBxLastName, txtBxMobileNo,GetAccountID(username)));
 
 
                             try
